@@ -381,7 +381,7 @@ try {
             "root","tiger");
             Statement stmt =con.createStatement();
             String table_name = "s"+detail.roll;
-            String table = "create table "+table_name+"(s_no int primary key auto_increment,extra varchar(50),date timestamp,price int,number int);";
+            String table = "create table "+table_name+"(s_no INT(6) not null auto_increment primary key,date TIMESTAMP DEFAULT CURRENT_TIMESTAMP , extra varchar(50),price int(6),number int(6));";
             stmt.executeUpdate(table);
             if(number!=0){
             String excmd = "INSERT INTO "+table_name+"(extra,number,price) VALUES ('" + other.item + "','" + number + "','"+ other.price*number  +"')";
@@ -403,7 +403,10 @@ try {
             stmt.executeUpdate(excmd3);}
             if(egg!=0){
             String excmd4 = "INSERT INTO "+table_name+"(extra,number,price) VALUES ('Egg','" + egg + "','"+ price.egg*egg  +"')";
-            stmt.executeUpdate(excmd4);}
+            stmt.executeUpdate(excmd4);
+            String excmd41 = "UPDATE eggs set quantity = quantity +"+egg+",amount = amount +"+price.egg*egg+" WHERE date = CURDATE()";
+            stmt.executeUpdate(excmd41);
+            }
             if(paneerbhurzi!=0){
             String excmd5 = "INSERT INTO "+table_name+"(extra,number,price) VALUES ('Paneerbhurzi','" + paneerbhurzi + "','"+ price.paneerbhurzi*paneerbhurzi  +"')";
             stmt.executeUpdate(excmd5);}
@@ -443,7 +446,10 @@ try {
             stmt.executeUpdate(excmd3);}
             if(egg!=0){
             String excmd4 = "INSERT INTO "+table_name+"(extra,number,price) VALUES ('Egg','" + egg + "','"+ price.egg*egg  +"')";
-            stmt.executeUpdate(excmd4);}
+            stmt.executeUpdate(excmd4);
+            String excmd41 = "UPDATE eggs set quantity = quantity +"+egg+",amount = amount +"+price.egg*egg+" WHERE date = CURDATE()";
+            stmt.executeUpdate(excmd41);
+            }
             if(paneerbhurzi!=0){
             String excmd5 = "INSERT INTO "+table_name+"(extra,number,price) VALUES ('Paneerbhurzi','" + paneerbhurzi + "','"+ price.paneerbhurzi*paneerbhurzi  +"')";
             stmt.executeUpdate(excmd5);}
